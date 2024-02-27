@@ -1,4 +1,13 @@
 {
     "header:movies": "Películas",
-    "header:quiz": "Quiz"
+    "header:quiz": "Quiz",
+    "header:english": "EN",
+    "header:spanish": "ES",
+    "home:title":"Bienvenidos.",
+    "home:description":"Millones de películas, programas de televisión y personas por descubrir. Explora ahora.",
+    "home:trending":"Tendencias",
+    "home:today":"Hoy",
+    "home:this_week":"Esta semana",
+    "generic:more-button":"+ Más",
+    "generic:loading":"Cargando..."
 }

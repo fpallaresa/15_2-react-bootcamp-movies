@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+@import '../../styles/media-queries.scss';
+
+.openning {
+  background-image: url('../../assets/openning.png');
+  background-size: cover;
+  background-position: center;
+  height: 365px;
+  position: relative;
+
+  @include for-big-desktop-up {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__info {
+    position: absolute;
+    color: $light-color;
+    z-index: 1000;
+    margin: 50px 10%;
+    text-align: left;
+
+    @include for-tablet-portrait-up {
+      margin: 100px 10%;
+    }
+
+    @include for-tablet-landscape-up {
+      margin: 100px 25% 100px 5%;
+    }
+
+    @include for-big-desktop-up {
+      max-width: 1208px;
+      margin: 100px auto;
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 auto 25px;
+
+    @include for-tablet-landscape-up {
+      font-size: 48px;
+      margin: 0 auto 10px;
+    }
+  }
+
+  &__description {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    margin: 0;
+
+    @include for-tablet-portrait-up {
+      font-size: 24px;
+      line-height: 34px;
+    }
+
+    @include for-tablet-landscape-up {
+      font-size: 32px;
+      line-height: 42px;
+    }
+    @include for-big-desktop-up {
+      width: 75%;
+    }
+  }
+}
