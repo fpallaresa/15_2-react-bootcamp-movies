@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { roundPercentage, formatDate, getClassForAverage } from '../../utils/utils';
 import useFetch from '../../hooks/useFetch';
 import './TrendingHomePage.scss';
 import { useLanguage } from '../../hooks/languageContext';
+import { usePagination } from '../../hooks/usePagination';
 
 const TrendingHomePage = () => {
   const { currentLanguage } = useLanguage();
-  const apiUrl =
-    currentLanguage === 'es'
-      ? `${process.env.REACT_APP_API_URL}trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&language=es-ES`
-      : `${process.env.REACT_APP_API_URL}trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
+  const [filter, setFilter] = useState('day');
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
+
+  const apiUrl = `${process.env.REACT_APP_API_URL}trending/all/${filter}?api_key=${process.env.REACT_APP_API_KEY}&language=${currentLanguage === 'es' ? 'es-ES' : 'en-US'}`;
 
   const [trendingData] = useFetch(apiUrl);
+  const [visibleItems, showMore, hasMore] = usePagination(trendingData?.results);
 
   if (!trendingData) {
-    return <div><FormattedMessage id='generic:loading' /></div>;
+    return (
+      <div>
+        <FormattedMessage id='generic:loading' />
+      </div>
+    );
   }
 
   return (
@@ -25,16 +34,16 @@ const TrendingHomePage = () => {
           <FormattedMessage id='home:trending' />
         </h3>
         <div className='trending__filters'>
-          <button className='btn btn--option-selected'>
+          <button className={`btn ${filter === 'day' ? 'btn--option-selected' : ''}`} onClick={() => handleFilterChange('day')}>
             <FormattedMessage id='home:today' />
           </button>
-          <button className='btn'>
+          <button className={`btn ${filter === 'week' ? 'btn--option-selected' : ''}`} onClick={() => handleFilterChange('week')}>
             <FormattedMessage id='home:this_week' />
           </button>
         </div>
       </div>
       <div className='trending__films'>
-        {trendingData.results.map((film, index) => (
+        {visibleItems.map((film, index) => (
           <div className='trending__card-film' key={index}>
             <img className='trending__card-img' src={`https://image.tmdb.org/t/p/w500${film?.poster_path}`} alt={film?.title} />
             <div className='trending__card-average'>
@@ -49,9 +58,11 @@ const TrendingHomePage = () => {
         ))}
       </div>
       <div className='button-container'>
-        <button className='btn btn--option-selected btn--uppercase'>
-          <FormattedMessage id='generic:more-button' />
-        </button>
+        {hasMore && (
+          <button className='btn btn--option-selected btn--uppercase' onClick={showMore}>
+            <FormattedMessage id='generic:more-button' />
+          </button>
+        )}
       </div>
     </section>
   );

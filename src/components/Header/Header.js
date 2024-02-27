@@ -5,8 +5,13 @@ import TMDBlogo from '../../assets/tmdblogo.svg';
 import './Header.scss';
 import { useLanguage } from '../../hooks/languageContext';
 
-const Header = () => {
+const Header = ({ setMessages, spanishMessages, englishMessages }) => {
   const { currentLanguage, handleLanguageChange } = useLanguage();
+
+  const changeLanguage = (language) => {
+    handleLanguageChange(language);
+    setMessages(language === 'es' ? spanishMessages : englishMessages);
+  };
 
   return (
     <div className='header'>
@@ -23,10 +28,10 @@ const Header = () => {
           </nav>
         </div>
         <div className='header__language-box'>
-          <button className={`header__language ${currentLanguage === 'es' ? 'header__language--active' : ''}`} onClick={() => handleLanguageChange('es')}>
+          <button className={`header__language ${currentLanguage === 'es' ? 'header__language--active' : ''}`} onClick={() => changeLanguage('es')}>
             <FormattedMessage id='header:spanish' />
           </button>
-          <button className={`header__language ${currentLanguage === 'en' ? 'header__language--active' : ''}`} onClick={() => handleLanguageChange('en')}>
+          <button className={`header__language ${currentLanguage === 'en' ? 'header__language--active' : ''}`} onClick={() => changeLanguage('en')}>
             <FormattedMessage id='header:english' />
           </button>
         </div>

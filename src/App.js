@@ -31,7 +31,7 @@ function App() {
       <LanguageProvider>
         <div className='App'>
           <HashRouter>
-            <Header setMessages={setMessages}></Header>
+            <Header setMessages={setMessages} spanishMessages={Spanish} englishMessages={English} />
             <Routes>
               <Route path='/' element={<HomePage />}></Route>
               <Route path='/film-page' element={<FilmPage />}></Route>

@@ -14,8 +14,5 @@ export const LanguageProvider = ({ children }) => {
 
 export const useLanguage = () => {
   const context = React.useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage debe ser usado dentro de un LanguageProvider');
-  }
   return context;
 };
