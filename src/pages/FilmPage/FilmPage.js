@@ -1,5 +1,11 @@
+import FilmInfoDetail from '../../components/FilmInfoDetail/FilmInfoDetail';
+import './FilmPage.scss';
+import { useParams } from 'react-router-dom';
+
 const FilmPage = () => {
-  return <div>FilmPage</div>;
+  const { filmId } = useParams();
+
+  return <FilmInfoDetail filmId={filmId} />;
 };
 
 export default FilmPage;

@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+@import '../../styles/media-queries.scss';
+
+.join {
+  background-image: url('../../assets/join-now.png');
+  background-size: cover;
+  background-position: center;
+  height: 375px;
+  position: relative;
+
+  @include for-big-desktop-up {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__info {
+    position: absolute;
+    color: $light-color;
+    z-index: 1000;
+    margin: 50px 6%;
+    text-align: left;
+
+    @include for-tablet-portrait-up {
+      margin: 100px 10%;
+    }
+
+    @include for-tablet-landscape-up {
+      margin: 100px 5%;
+    }
+
+    @include for-big-desktop-up {
+      max-width: 1208px;
+      margin: 100px auto;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 auto 25px;
+
+    @include for-tablet-landscape-up {
+      font-size: 48px;
+      margin: 0 auto 10px;
+    }
+  }
+
+  &__description {
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 24px;
+    margin: 0;
+
+    @include for-tablet-portrait-up {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    @include for-tablet-landscape-up {
+      font-size: 24px;
+      line-height: 36px;
+    }
+    @include for-big-desktop-up {
+      width: 100%;
+    }
+  }
+}

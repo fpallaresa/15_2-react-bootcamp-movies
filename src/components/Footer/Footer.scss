@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+@import '../../styles/media-queries.scss';
+
+.footer {
+    background-color: $primary-color;
+    text-align: center;
+    padding: 50px;
+
+    &__img {
+        width: 150px;
+    }
+}

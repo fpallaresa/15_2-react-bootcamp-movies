@@ -23,30 +23,18 @@ button {
   cursor: pointer;
   background: none;
   font-family: 'Poppins', sans-serif;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 a {
   text-decoration: none;
-}
+  cursor: pointer;
+  color: $primary-color;
 
-/* Remove borders while loading image */
-img[src=""],
-img[src="undefined"],
-img:not([src]) {
-  opacity: 0;
-}
-
-@keyframes show {
-  from {
-    opacity: 0;
+  &:hover {
+    opacity: 0.7;
   }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.show-slow {
-  opacity: 1;
-  animation: show ease-in-out 500ms;
 }

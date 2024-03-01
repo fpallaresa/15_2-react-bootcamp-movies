@@ -9,12 +9,24 @@ export const formatDate = (dateString) => {
 
 export const getClassForAverage = (average) => {
   if (average >= 75 && average <= 100) {
-    return 'trending__card-average-data trending__card-average-data--positive';
+    return 'cards-film__card-average-data cards-film__card-average-data--positive';
   } else if (average >= 50 && average <= 74) {
-    return 'trending__card-average-data trending__card-average-data--middle';
+    return 'cards-film__card-average-data cards-film__card-average-data--middle';
   } else if (average >= 1 && average <= 49) {
-    return 'trending__card-average-data trending__card-average-data--negative';
+    return 'cards-film__card-average-data cards-film__card-average-data--negative';
   } else {
-    return 'trending__card-average-data';
+    return 'cards-film__card-average-data';
+  }
+};
+
+export const getClassForAverageDetail = (average) => {
+  if (average >= 75 && average <= 100) {
+    return 'film-detail__average-data film-detail__average-data--positive';
+  } else if (average >= 50 && average <= 74) {
+    return 'film-detail__average-data film-detail__average-data--middle';
+  } else if (average >= 1 && average <= 49) {
+    return 'film-detail__average-data film-detail__average-data--negative';
+  } else {
+    return 'film-detail__average-data';
   }
 };

@@ -1,30 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { roundPercentage, formatDate, getClassForAverage } from '../../utils/utils';
-import useFetch from '../../hooks/useFetch';
 import './TrendingHomePage.scss';
 import { useLanguage } from '../../hooks/languageContext';
-import { usePagination } from '../../hooks/usePagination';
+import useFetch from '../../hooks/useFetch';
+import FilmsCards from '../FilmsCards/FilmsCards';
 
 const TrendingHomePage = () => {
   const { currentLanguage } = useLanguage();
-  const [filter, setFilter] = useState('day');
+  const [filter, setFilter] = React.useState('day');
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalPages, setTotalPages] = React.useState(1);
+  const [trendingData, setTrendingData] = React.useState({ results: [] });
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
+    setCurrentPage(1);
+    setTotalPages(1);
+    setTrendingData({ results: [] });
   };
 
-  const apiUrl = `${process.env.REACT_APP_API_URL}trending/all/${filter}?api_key=${process.env.REACT_APP_API_KEY}&language=${currentLanguage === 'es' ? 'es-ES' : 'en-US'}`;
+  const apiUrl = `${process.env.REACT_APP_API_URL}trending/all/${filter}?api_key=${process.env.REACT_APP_API_KEY}&language=${currentLanguage}&page=${currentPage}`;
+  const [data, loading, error] = useFetch(apiUrl);
 
-  const [trendingData] = useFetch(apiUrl);
-  const [visibleItems, showMore, hasMore] = usePagination(trendingData?.results);
+  React.useEffect(() => {
+    if (data) {
+      setTrendingData((prevData) => ({
+        ...prevData,
+        results: [...prevData.results, ...data.results],
+      }));
+      setTotalPages(data.total_pages);
+    }
+  }, [data]);
 
-  if (!trendingData) {
+  React.useEffect(() => {
+    if (currentLanguage) {
+      setTrendingData({ results: [] });
+    }
+  }, [currentLanguage]);
+
+  if (loading) {
     return (
       <div>
         <FormattedMessage id='generic:loading' />
       </div>
     );
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
   }
 
   return (
@@ -42,24 +65,10 @@ const TrendingHomePage = () => {
           </button>
         </div>
       </div>
-      <div className='trending__films'>
-        {visibleItems.map((film, index) => (
-          <div className='trending__card-film' key={index}>
-            <img className='trending__card-img' src={`https://image.tmdb.org/t/p/w500${film?.poster_path}`} alt={film?.title} />
-            <div className='trending__card-average'>
-              <span className='trending__card-average-number'>
-                {roundPercentage(film?.vote_average)} <span className='percent'>%</span>
-              </span>
-              <span className={getClassForAverage(roundPercentage(film?.vote_average))}></span>
-            </div>
-            <h4 className='trending__card-title'>{film?.title || film?.name}</h4>
-            <span className='trending__card-date'>{formatDate(film?.release_date || film?.first_air_date)}</span>
-          </div>
-        ))}
-      </div>
+      <div className='trending__films'>{trendingData && trendingData?.results.map((film) => <FilmsCards film={film} key={film.id} />)}</div>
       <div className='button-container'>
-        {hasMore && (
-          <button className='btn btn--option-selected btn--uppercase' onClick={showMore}>
+        {currentPage < totalPages && (
+          <button className='btn btn--option-selected btn--uppercase' onClick={() => setCurrentPage(currentPage + 1)}>
             <FormattedMessage id='generic:more-button' />
           </button>
         )}

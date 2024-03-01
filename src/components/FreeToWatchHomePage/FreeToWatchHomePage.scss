@@ -2,7 +2,7 @@
 @import '../../styles/media-queries.scss';
 @import '../../styles/variables.scss';
 
-.trending {
+.watch {
   display: flex;
   flex-direction: column;
 
@@ -45,14 +45,10 @@
     padding: 20px 20px 0;
 
     @include for-tablet-portrait-up {
+      padding: 20px 40px 0;
       flex-wrap: nowrap;
       gap: 20px;
       overflow-x: scroll;
-      background-image: url('../../assets/trending-background.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 20px 40px 0;
       min-height: 380px;
     }
   }
