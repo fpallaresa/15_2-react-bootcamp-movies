@@ -18,6 +18,8 @@
     "trailer:youtube_button":"Ver en Youtube",
     "film:user_score":"Puntuación de usuario",
     "film:overview":"Vista general",
+    "film:casting":"Reparto principal",
+    "film:recommendation":"Recomendaciones",
     "generic:more-button":"+ Más",
     "generic:loading":"Cargando..."
 }

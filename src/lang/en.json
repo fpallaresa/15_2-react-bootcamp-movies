@@ -18,6 +18,8 @@
     "trailer:youtube_button":"See on Youtube",
     "film:user_score":"User Score",
     "film:overview":"Overview",
+    "film:casting":"Top Billed Cast",
+    "film:recommendation":"Recommendations",
     "generic:more-button":"+ More",
     "generic:loading":"Loading..."
 }
