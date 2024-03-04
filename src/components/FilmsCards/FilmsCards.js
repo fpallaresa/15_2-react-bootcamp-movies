@@ -1,12 +1,12 @@
-import { roundPercentage, formatDate, getClassForAverage } from '../../utils/utils';
+import { roundPercentage, formatDate, getClassForAverage, handleImageError } from '../../utils/utils';
 import { Link } from 'react-router-dom';
 import './FilmsCards.scss';
 
-const FilmsCards = ({ film, index }) => {
+const FilmsCards = ({ film, index, mediaType }) => {
   return (
     <div className='cards-film' key={index}>
-      <Link to={`/film-page/${film.id}`} className='cards-film__card-link' title={film?.title || film?.name}>
-        <img className='cards-film__card-img' src={`https://image.tmdb.org/t/p/w500${film?.poster_path}`} alt={film?.title} />
+      <Link to={`/film-page/${film.id}/${mediaType}`} className='cards-film__card-link' title={film?.title || film?.name}>
+        <img className='cards-film__card-img' src={`https://image.tmdb.org/t/p/w500${film?.poster_path}`} onError={handleImageError} alt={film?.title} />
       </Link>
       <div className='cards-film__card-average'>
         <span className='cards-film__card-average-number'>

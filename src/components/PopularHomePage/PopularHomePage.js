@@ -65,7 +65,7 @@ const PopularHomePage = () => {
           </button>
         </div>
       </div>
-      <div className='popular__films'>{popularData && popularData?.results.map((film) => <FilmsCards film={film} key={film.id} />)}</div>
+      <div className='popular__films'>{popularData && popularData?.results.map((film) => <FilmsCards film={film} key={film.id} mediaType={filter === 'movie' ? 'movie' : 'tv'} />)}</div>
       <div className='button-container'>
         {currentPage < totalPages && (
           <button className='btn btn--option-selected btn--uppercase' onClick={() => setCurrentPage(currentPage + 1)}>

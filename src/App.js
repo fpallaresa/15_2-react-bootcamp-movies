@@ -37,7 +37,7 @@ function App() {
               <Header setMessages={setMessages} spanishMessages={Spanish} englishMessages={English} />
               <Routes>
                 <Route path='/' element={<HomePage />}></Route>
-                <Route path='/film-page/:filmId' element={<FilmPage />}></Route>
+                <Route path='/film-page/:filmId/:type' element={<FilmPage />} />
                 <Route path='/quiz' element={<QuizPage />}></Route>
               </Routes>
               <Footer />

@@ -1,3 +1,5 @@
+import defaultImage from '../assets/dummy.png';
+
 export const roundPercentage = (voteAverage) => {
   return Math.round(parseFloat(voteAverage) * 10);
 };
@@ -29,4 +31,17 @@ export const getClassForAverageDetail = (average) => {
   } else {
     return 'film-detail__average-data';
   }
+};
+
+export const handleImageError = (event) => {
+  event.target.src = defaultImage;
+};
+
+export const generateRandom = (min = 0, max = 100) => {
+  const difference = max - min;
+  let rand = Math.random();
+  rand = Math.floor(rand * difference);
+  rand = rand + min;
+
+  return rand;
 };

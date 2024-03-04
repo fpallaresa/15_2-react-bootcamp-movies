@@ -65,7 +65,7 @@ const TrendingHomePage = () => {
           </button>
         </div>
       </div>
-      <div className='trending__films'>{trendingData && trendingData?.results.map((film) => <FilmsCards film={film} key={film.id} />)}</div>
+      <div className='trending__films'>{trendingData && trendingData?.results.map((film) => <FilmsCards film={film} key={film.id} mediaType={film.media_type}/>)}</div>
       <div className='button-container'>
         {currentPage < totalPages && (
           <button className='btn btn--option-selected btn--uppercase' onClick={() => setCurrentPage(currentPage + 1)}>

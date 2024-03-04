@@ -47,7 +47,7 @@
     @include for-tablet-portrait-up {
       flex-wrap: nowrap;
       gap: 20px;
-      overflow-x: scroll;
+      overflow-x: auto;
       padding: 20px 40px 0;
       min-height: 380px;
     }

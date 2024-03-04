@@ -6,7 +6,7 @@
   margin-bottom: 30px;
 
   @include for-tablet-portrait-up {
-    width: 100%;
+    width: auto;
   }
 
   &__card-img {
