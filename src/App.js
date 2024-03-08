@@ -8,6 +8,7 @@ import FilmPage from './pages/FilmPage/FilmPage';
 import QuizPage from './pages/QuizPage/QuizPage';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import ScrollTop from './components/ScrollTop/ScrollTop';
 import './App.scss';
 import English from './lang/en.json';
 import Spanish from './lang/es.json';
@@ -41,6 +42,7 @@ function App() {
                 <Route path='/quiz' element={<QuizPage />}></Route>
               </Routes>
               <Footer />
+              <ScrollTop />
             </HashRouter>
           </div>
         </FilmProvider>
