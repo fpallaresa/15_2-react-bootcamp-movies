@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import './MovieTrailersHomePage.scss';
 import { useLanguage } from '../../hooks/languageContext';
@@ -7,14 +7,14 @@ import TrailerCards from '../TrailersCards/TrailersCards';
 
 const MovieTrailersHomePage = () => {
   const { currentLanguage } = useLanguage();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [movieTrailersData, setMovieTrailersData] = useState({ results: [] });
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalPages, setTotalPages] = React.useState(1);
+  const [movieTrailersData, setMovieTrailersData] = React.useState({ results: [] });
 
   const apiUrl = `${process.env.REACT_APP_API_URL}discover/movie?sort_by=release_date.desc&vote_count.gte=1000&vote_average.gte=5&api_key=${process.env.REACT_APP_API_KEY}&language=${currentLanguage}&page=${currentPage}`;
   const [data, loading, error] = useFetch(apiUrl);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (data) {
       setMovieTrailersData((prevData) => ({
         ...prevData,
@@ -24,7 +24,7 @@ const MovieTrailersHomePage = () => {
     }
   }, [data]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (currentLanguage) {
       setMovieTrailersData({ results: [] });
     }

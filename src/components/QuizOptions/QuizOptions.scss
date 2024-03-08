@@ -1,0 +1,55 @@
+@import '../../styles/buttons.scss';
+@import '../../styles/media-queries.scss';
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  max-width: 580px;
+  margin: auto;
+
+  &__header {
+    padding: 50px 20px 0;
+    display: flex;
+    flex-direction: column;
+
+    @include for-tablet-portrait-up {
+      flex-direction: row;
+      padding: 50px 40px 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px;
+    margin-bottom: 50px;
+
+    @include for-tablet-portrait-up {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    width: 100%;
+
+    @include for-tablet-portrait-up {
+      width: calc(50% - 15px);
+    }
+  }
+
+  &__solve {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 20px;
+    gap: 15px;
+    margin-bottom: 100px;
+  }
+
+  &__solve-btn {
+    width: 135px;
+  }
+}

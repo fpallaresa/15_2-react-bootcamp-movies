@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import './FilmRecommendationDetail.scss';
 import RecommendationsCards from '../RecommendationsCards/RecommendationsCards';

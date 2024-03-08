@@ -20,6 +20,9 @@
     "film:overview":"Overview",
     "film:casting":"Top Billed Cast",
     "film:recommendation":"Recommendations",
+    "quiz:title": "Options",
+    "quiz:restart":"Restart",
+    "quiz:solve":"Solve",
     "generic:more-button":"+ More",
     "generic:loading":"Loading..."
 }

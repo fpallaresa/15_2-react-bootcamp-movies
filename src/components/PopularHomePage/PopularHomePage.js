@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import './PopularHomePage.scss';
 import { useLanguage } from '../../hooks/languageContext';
@@ -7,10 +7,10 @@ import FilmsCards from '../FilmsCards/FilmsCards';
 
 const PopularHomePage = () => {
   const { currentLanguage } = useLanguage();
-  const [filter, setFilter] = useState('movie');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [popularData, setPopularData] = useState({ results: [] });
+  const [filter, setFilter] = React.useState('movie');
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalPages, setTotalPages] = React.useState(1);
+  const [popularData, setPopularData] = React.useState({ results: [] });
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -22,7 +22,7 @@ const PopularHomePage = () => {
   const apiUrl = `${process.env.REACT_APP_API_URL}${filter}/popular?api_key=${process.env.REACT_APP_API_KEY}&language=${currentLanguage}&page=${currentPage}`;
   const [data, loading, error] = useFetch(apiUrl);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (data) {
       setPopularData((prevData) => ({
         ...prevData,
@@ -32,7 +32,7 @@ const PopularHomePage = () => {
     }
   }, [data]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (currentLanguage) {
       setPopularData({ results: [] });
     }

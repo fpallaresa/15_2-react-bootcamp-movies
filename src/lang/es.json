@@ -20,6 +20,9 @@
     "film:overview":"Sinopsis",
     "film:casting":"Reparto principal",
     "film:recommendation":"Recomendaciones",
+    "quiz:title": "Opciones",
+    "quiz:restart":"Reiniciar",
+    "quiz:solve":"Resolver",
     "generic:more-button":"+ Más",
     "generic:loading":"Cargando..."
 }

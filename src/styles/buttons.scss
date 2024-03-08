@@ -9,6 +9,11 @@
   padding: 6px 20px;
   font-weight: 100;
 
+  &:disabled,
+  &[disabled] {
+    opacity: 0.3;
+  }
+
   &--option-selected {
     background-color: $primary-color;
     border: solid 1px $primary-color;
@@ -17,6 +22,24 @@
 
   &--uppercase {
     text-transform: uppercase;
+  }
+
+  &--option-select {
+    color: $light-color;
+    font-weight: 600;
+    background-color: $senary-color;
+  }
+
+  &--option-correct {
+    background-color: $correct-color;
+    color: $light-color;
+    font-weight: 600;
+  }
+
+  &--option-wrong {
+    background-color: $wrong-color;
+    color: $light-color;
+    font-weight: 600;
   }
 }
 
