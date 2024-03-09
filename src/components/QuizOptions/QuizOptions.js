@@ -55,7 +55,7 @@ const QuizOptions = ({ filmData, incorrectOptions, generateNewPage, handleQuizSo
   const handleSolve = () => {
     // Resuelve el quiz
     setGameIsSolved(true);
-    handleQuizSolve(filmData.title);
+    handleQuizSolve(filmData?.title);
   };
 
   const generateNewGamePlay = () => {
