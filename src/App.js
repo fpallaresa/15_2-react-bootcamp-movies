@@ -2,7 +2,6 @@ import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { LanguageProvider } from './hooks/languageContext';
-import { FilmProvider } from './hooks/filmContext';
 import HomePage from './pages/HomePage/HomePage';
 import FilmPage from './pages/FilmPage/FilmPage';
 import QuizPage from './pages/QuizPage/QuizPage';
@@ -32,20 +31,18 @@ function App() {
   return (
     <IntlProvider messages={messages} locale={locale}>
       <LanguageProvider>
-        <FilmProvider>
-          <div className='App'>
-            <HashRouter>
-              <Header setMessages={setMessages} spanishMessages={Spanish} englishMessages={English} />
-              <Routes>
-                <Route path='/' element={<HomePage />}></Route>
-                <Route path='/film-page/:filmId/:type' element={<FilmPage />} />
-                <Route path='/quiz' element={<QuizPage />}></Route>
-              </Routes>
-              <Footer />
-              <ScrollTop />
-            </HashRouter>
-          </div>
-        </FilmProvider>
+        <div className='App'>
+          <HashRouter>
+            <Header setMessages={setMessages} spanishMessages={Spanish} englishMessages={English} />
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/film-page/:filmId/:type' element={<FilmPage />} />
+              <Route path='/quiz' element={<QuizPage />} />
+            </Routes>
+            <Footer />
+            <ScrollTop />
+          </HashRouter>
+        </div>
       </LanguageProvider>
     </IntlProvider>
   );
